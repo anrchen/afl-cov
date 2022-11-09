@@ -34,6 +34,7 @@ HOMEPATH=`dirname $0`
 export PATH="$HOMEPATH:$PATH"
 
 afl-cov $OPT1 $OPT2 -d "$DST" --cover-corpus --coverage-cmd "$2" --code-dir . --overwrite
+echo "afl-cov $OPT1 $OPT2 -d \"$DST\" --cover-corpus --coverage-cmd \"$2\" --code-dir . --overwrite"
 
 test -e "$1"/fuzzer_stats && {
   DIFF=$(expr `grep last_update "$DST"/fuzzer_stats|awk '{print$3}'` - `grep start_time "$DST"/fuzzer_stats|awk '{print$3}'`)
